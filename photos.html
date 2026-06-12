@@ -24,13 +24,12 @@
   <main class="page-main">
     <section class="page-hero reveal">
       <p class="kicker">Photography</p>
-      <h1>Random photos from fieldwork and everyday life</h1>
+      <h1>Random photos from travel and everyday life</h1>
       <p>
-        Put as many images as you want in assets/photos. The page automatically pulls available
-        files and displays a random set of 50 each load on GitHub Pages.
+        The page automatically pulls random photos, can be sorted by newest.
       </p>
       <div class="photo-controls" role="group" aria-label="Photo sort mode">
-        <button class="pill-btn active" id="sort-random" data-sort-mode="random" type="button">Random 50</button>
+        <button class="pill-btn" id="randomize-photos" type="button">Randomize</button>
         <button class="pill-btn" id="sort-newest" data-sort-mode="newest" type="button">Newest 50</button>
       </div>
     </section>
@@ -40,6 +39,7 @@
       id="photo-grid"
       data-photo-limit="50"
       data-github-user="DhakadPankaj"
+      data-github-repo="dhakadpankaj.github.io"
       data-github-path="assets/photos"
     >
       <p class="muted">Loading photos...</p>

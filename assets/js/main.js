@@ -51,10 +51,12 @@ function isImageName(name) {
 
 function inferGitHubRepo(user) {
   const host = window.location.hostname.toLowerCase();
-  const pathFirstPart = window.location.pathname.split('/').filter(Boolean)[0] || '';
+  const pathParts = window.location.pathname.split('/').filter(Boolean);
+  const pathFirstPart = pathParts[0] || '';
+  const looksLikeFile = /\.[a-z0-9]+$/i.test(pathFirstPart);
 
   if (host.endsWith('github.io')) {
-    if (pathFirstPart) {
+    if (pathFirstPart && !looksLikeFile) {
       return pathFirstPart;
     }
     return `${user}.github.io`;
@@ -69,7 +71,7 @@ async function loadRandomPhotos() {
     return;
   }
 
-  const randomButton = document.getElementById('sort-random');
+  const randomizeButton = document.getElementById('randomize-photos');
   const newestButton = document.getElementById('sort-newest');
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
@@ -92,9 +94,6 @@ async function loadRandomPhotos() {
 
   function setActiveMode(mode) {
     activeMode = mode;
-    if (randomButton) {
-      randomButton.classList.toggle('active', mode === 'random');
-    }
     if (newestButton) {
       newestButton.classList.toggle('active', mode === 'newest');
     }
@@ -175,8 +174,8 @@ async function loadRandomPhotos() {
     showLightbox(index);
   });
 
-  if (randomButton) {
-    randomButton.addEventListener('click', () => {
+  if (randomizeButton) {
+    randomizeButton.addEventListener('click', () => {
       setActiveMode('random');
       applySortMode();
     });
