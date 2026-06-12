@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Random photography moments by Pankaj Dhakad.">
+  <title>Pankaj Dhakad | Random Photos</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Pankaj Dhakad</a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a class="active" href="photos.html">Random Photos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero reveal">
+      <p class="kicker">Photography</p>
+      <h1>Random photos from fieldwork and everyday life</h1>
+      <p>
+        Put as many images as you want in assets/photos. The page automatically pulls available
+        files and displays a random set of 50 each load on GitHub Pages.
+      </p>
+      <div class="photo-controls" role="group" aria-label="Photo sort mode">
+        <button class="pill-btn active" id="sort-random" data-sort-mode="random" type="button">Random 50</button>
+        <button class="pill-btn" id="sort-newest" data-sort-mode="newest" type="button">Newest 50</button>
+      </div>
+    </section>
+
+    <section
+      class="photo-grid reveal"
+      id="photo-grid"
+      data-photo-limit="50"
+      data-github-user="DhakadPankaj"
+      data-github-path="assets/photos"
+    >
+      <p class="muted">Loading photos...</p>
+    </section>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+      <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close photo viewer">Close</button>
+      <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous photo">Prev</button>
+      <figure class="lightbox-figure">
+        <img id="lightbox-image" src="" alt="">
+        <figcaption id="lightbox-caption"></figcaption>
+      </figure>
+      <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="Next photo">Next</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p><span id="year"></span> Pankaj Dhakad</p>
+  </footer>
+</body>
+</html>
