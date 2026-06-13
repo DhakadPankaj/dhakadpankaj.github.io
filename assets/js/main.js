@@ -13,6 +13,18 @@ if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
 
+const lastUpdatedElement = document.getElementById('last-updated');
+if (lastUpdatedElement) {
+  const updated = new Date(document.lastModified);
+  if (!Number.isNaN(updated.getTime())) {
+    lastUpdatedElement.textContent = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+    }).format(updated);
+  }
+}
+
 const revealItems = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window && revealItems.length > 0) {
   const observer = new IntersectionObserver((entries) => {
