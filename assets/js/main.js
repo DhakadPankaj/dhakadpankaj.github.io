@@ -15,13 +15,22 @@ if (yearElement) {
 
 const lastUpdatedElement = document.getElementById('last-updated');
 if (lastUpdatedElement) {
-  const updated = new Date(document.lastModified);
+  const rawLastModified = document.lastModified;
+  const updated = new Date(rawLastModified);
   if (!Number.isNaN(updated.getTime())) {
     lastUpdatedElement.textContent = new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
       month: 'short',
       day: '2-digit',
     }).format(updated);
+  } else if (rawLastModified && rawLastModified.trim()) {
+    lastUpdatedElement.textContent = rawLastModified;
+  } else {
+    lastUpdatedElement.textContent = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+    }).format(new Date());
   }
 }
 
